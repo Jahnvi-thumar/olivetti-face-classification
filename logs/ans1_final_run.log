@@ -1,0 +1,129 @@
+downloading Olivetti faces from https://ndownloader.figshare.com/files/5976027 to /root/scikit_learn_data
+dict_keys(['data', 'images', 'target', 'DESCR'])
+(400, 4096)
+(400, 64, 64)
+(400,)
+X shape :  (400, 4096)
+y shape :  (400,)
+Dataset and split created.
+Training: (240, 4096) (240,)
+Validation: (80, 4096) (80,)
+Test: (80, 4096) (80,)
+
+All 15 Tree Settings : 
+ max_depth  min_samples_leaf  train_accuracy  validation_accuracy
+       2.0                 1           0.075               0.0625
+       2.0                 2           0.075               0.0625
+       2.0                 4           0.075               0.0625
+       4.0                 1           0.125               0.1125
+       4.0                 2           0.125               0.1125
+       4.0                 4           0.125               0.1125
+       8.0                 1           0.225               0.1875
+       8.0                 2           0.225               0.1875
+       8.0                 4           0.225               0.1875
+      16.0                 1           0.425               0.3625
+      16.0                 2           0.425               0.3625
+      16.0                 4           0.425               0.3625
+       NaN                 1           1.000               0.6250
+       NaN                 2           0.975               0.6000
+       NaN                 4           0.975               0.6500
+
+Selected tree settings:
+max_depth: None
+min_samples_leaf: 4
+Validation accuracy: 0.65
+
+
+FINAL BASELINE RESULTS
+----------------------
+Train accuracy: 0.975
+Validation accuracy: 0.65
+Test accuracy: 0.5625
+Number of leaves: 40
+Mean samples per leaf: 6.0
+Fraction of leaves with one training example: 0.0
+
+Trees trained: 200
+Bootstrap indices saved: 200
+
+Q1(b): BAGGING RESULTS
+  B  train_accuracy  validation_accuracy  test_accuracy  avg_distinct_examples
+  1        0.725000               0.4250         0.4500                 155.00
+  5        0.937500               0.5750         0.5875                 152.20
+ 10        0.983333               0.7625         0.7125                 151.70
+ 25        1.000000               0.8125         0.7625                 151.24
+ 50        1.000000               0.8875         0.9000                 151.04
+100        1.000000               0.8750         0.9125                 151.68
+200        1.000000               0.8750         0.9125                 152.08
+
+
+Number of original training examples: 240
+Theoretical expected distinct examples: 151.8931938460841
+Theoretical fraction of training set represented: 0.6328883076920171
+
+(200, 240)
+
+Q1(c): ENSEMBLE DIAGNOSTICS
+  B  OOB_accuracy  pairwise_disagreement  mean_vote_margin
+  1      0.352941                    NaN          1.000000
+  5      0.241860               0.823750          0.212500
+ 10      0.367089               0.807222          0.232500
+ 25      0.562500               0.804708          0.243000
+ 50      0.716667               0.802684          0.257750
+100      0.758333               0.803942          0.254375
+200      0.770833               0.805903          0.251625
+
+<Figure size 1500x400 with 3 Axes>
+Q1(d): ACCURACY AND MEAN PREDICTION CONFIDENCE
+Test set  Tree accuracy  Tree mean confidence  Bagging accuracy  Bagging mean confidence
+   Clean         0.5625              0.981548            0.9000                  0.39100
+  Masked         0.2750              1.000000            0.7375                  0.29225
+
+
+TWO CASES WHERE BAGGING CORRECTS THE TREE
+=========================================
+
+Test-set position: 0
+Original dataset image index: 3
+Actual identity: 0
+Tree prediction: 11
+Tree confidence: 1.000
+Bagging prediction: 0
+Bagging confidence: 0.400
+Bagging vote counts: {0: 20, 2: 2, 3: 3, 6: 1, 9: 1, 11: 4, 12: 1, 16: 2, 17: 1, 20: 2, 22: 1, 23: 3, 27: 2, 28: 2, 30: 1, 35: 2, 37: 1, 39: 1}
+
+Test-set position: 1
+Original dataset image index: 2
+Actual identity: 0
+Tree prediction: 1
+Tree confidence: 1.000
+Bagging prediction: 0
+Bagging confidence: 0.340
+Bagging vote counts: {0: 17, 1: 1, 2: 1, 3: 2, 4: 1, 6: 1, 7: 5, 9: 2, 10: 2, 13: 1, 15: 10, 17: 2, 24: 1, 26: 2, 37: 1, 39: 1}
+
+TWO CASES WHERE BOTH MODELS ARE WRONG
+=====================================
+
+Test-set position: 7
+Original dataset image index: 32
+Actual identity: 3
+Tree prediction: 35
+Tree confidence: 1.000
+Bagging prediction: 4
+Bagging confidence: 0.180
+Bagging vote counts: {0: 1, 1: 4, 3: 5, 4: 9, 5: 1, 7: 1, 11: 1, 12: 2, 14: 2, 18: 1, 19: 1, 20: 2, 21: 1, 23: 1, 25: 1, 28: 2, 30: 3, 32: 1, 35: 4, 36: 1, 37: 1, 38: 1, 39: 4}
+
+Test-set position: 31
+Original dataset image index: 153
+Actual identity: 15
+Tree prediction: 5
+Tree confidence: 1.000
+Bagging prediction: 5
+Bagging confidence: 0.280
+Bagging vote counts: {0: 1, 3: 4, 4: 1, 5: 14, 6: 7, 10: 1, 12: 2, 13: 1, 15: 4, 17: 4, 18: 5, 19: 1, 35: 4, 39: 1}
+
+<Figure size 800x400 with 2 Axes>
+<Figure size 800x400 with 2 Axes>
+Mounted at /content/drive
+
+FileNotFoundError: [Errno 2] No such file or directory: '/content/answer1.ipynb'

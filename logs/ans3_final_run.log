@@ -1,0 +1,172 @@
+Mounted at /content/drive
+
+downloading Olivetti faces from https://ndownloader.figshare.com/files/5976027 to /root/scikit_learn_data
+Split file found: drive/MyDrive/Machine Learning IITJ/Assignment-2/olivetti_split.npz
+Original training samples: 240
+Clean test samples: 80
+Number of classes: 40
+
+Running repetition 1/30
+Running repetition 2/30
+Running repetition 3/30
+Running repetition 4/30
+Running repetition 5/30
+Running repetition 6/30
+Running repetition 7/30
+Running repetition 8/30
+Running repetition 9/30
+Running repetition 10/30
+Running repetition 11/30
+Running repetition 12/30
+Running repetition 13/30
+Running repetition 14/30
+Running repetition 15/30
+Running repetition 16/30
+Running repetition 17/30
+Running repetition 18/30
+Running repetition 19/30
+Running repetition 20/30
+Running repetition 21/30
+Running repetition 22/30
+Running repetition 23/30
+Running repetition 24/30
+Running repetition 25/30
+Running repetition 26/30
+Running repetition 27/30
+Running repetition 28/30
+Running repetition 29/30
+Running repetition 30/30
+
+dict_keys(['Single Tree', 'Bagging (50 trees)', 'SAMME Boosting'])
+dict_keys(['Single Tree', 'Bagging (50 trees)', 'SAMME Boosting'])
+dict_keys(['Single Tree', 'Bagging (50 trees)', 'SAMME Boosting'])
+dict_keys(['Single Tree', 'Bagging (50 trees)', 'SAMME Boosting'])
+
+
+===========================================================================
+Q3(a): MEASURED BIAS-VARIANCE RESULTS
+===========================================================================
+             Model Bias Squared Variance Mean Test Accuracy Std Test Accuracy
+       Single Tree     0.374528 0.635472             0.4950            0.0456
+Bagging (50 trees)     0.524167 0.032239             0.7550            0.0440
+    SAMME Boosting     0.914906 0.015014             0.1963            0.0499
+
+Saved results to Q3a_bias_variance_results.csv
+Saved class prediction vectors to Q3a_prediction_history.npz
+
+ndwude
+
+Q3(b): Running repetition 1/30
+Q3(b): Running repetition 2/30
+Q3(b): Running repetition 3/30
+Q3(b): Running repetition 4/30
+Q3(b): Running repetition 5/30
+Q3(b): Running repetition 6/30
+Q3(b): Running repetition 7/30
+Q3(b): Running repetition 8/30
+Q3(b): Running repetition 9/30
+Q3(b): Running repetition 10/30
+Q3(b): Running repetition 11/30
+Q3(b): Running repetition 12/30
+Q3(b): Running repetition 13/30
+Q3(b): Running repetition 14/30
+Q3(b): Running repetition 15/30
+Q3(b): Running repetition 16/30
+Q3(b): Running repetition 17/30
+Q3(b): Running repetition 18/30
+Q3(b): Running repetition 19/30
+Q3(b): Running repetition 20/30
+Q3(b): Running repetition 21/30
+Q3(b): Running repetition 22/30
+Q3(b): Running repetition 23/30
+Q3(b): Running repetition 24/30
+Q3(b): Running repetition 25/30
+Q3(b): Running repetition 26/30
+Q3(b): Running repetition 27/30
+Q3(b): Running repetition 28/30
+Q3(b): Running repetition 29/30
+Q3(b): Running repetition 30/30
+
+Q3(b): Results
+
+                                   Model  Bias squared  Variance  \
+0        Single Tree - Shallow (depth=2)        0.9189    0.0363   
+1        Bagging 100 - Shallow (depth=2)        0.9319    0.0113   
+2  Single Tree - Selected (unrestricted)        0.4063    0.6720   
+3  Bagging 100 - Selected (unrestricted)        0.5304    0.0258   
+4          Single Tree - Deep (depth=20)        0.5864    0.3210   
+5          Bagging 100 - Deep (depth=20)        0.6261    0.0228   
+
+   Mean test accuracy  SD test accuracy  
+0              0.0550            0.0160  
+1              0.1463            0.0634  
+2              0.4608            0.0518  
+3              0.7617            0.0432  
+4              0.3146            0.0462  
+5              0.6671            0.0423  
+
+Variance reduction and accuracy improvement
+
+             Depth setting  Single-tree variance  Bagging variance  \
+0        Shallow (depth=2)                0.0363            0.0113   
+1  Selected (unrestricted)                0.6720            0.0258   
+2          Deep (depth=20)                0.3210            0.0228   
+
+   Variance removed  Variance reduction (%)  Single-tree accuracy  \
+0            0.0249                 68.7629                0.0550   
+1            0.6463                 96.1661                0.4608   
+2            0.2983                 92.9059                0.3146   
+
+   Bagging accuracy  Accuracy improvement  
+0            0.1463                0.0913  
+1            0.7617                0.3008  
+2            0.6671                0.3525  
+Q3(c): MEASURED DEPTH COMPARISON
+
+                     Depth  Single accuracy  Bagged accuracy  \
+0        Shallow (depth=2)           0.0550           0.1463   
+1  Selected (unrestricted)           0.4608           0.7617   
+2          Deep (depth=20)           0.3146           0.6671   
+
+   Accuracy improvement  Single bias^2  Bagged bias^2  Single variance  \
+0                0.0913         0.9189         0.9319           0.0363   
+1                0.3008         0.4063         0.5304           0.6720   
+2                0.3525         0.5864         0.6261           0.3210   
+
+   Bagged variance  Variance reduction  Single mean leaf occupancy  \
+0           0.0113              0.0249                     80.0000   
+1           0.0258              0.6463                      6.0000   
+2           0.0228              0.2983                     10.9091   
+
+   Single singleton leaf fraction  Bagged mean leaf occupancy  \
+0                             0.0                     77.0000   
+1                             0.0                      6.1125   
+2                             0.0                      9.1404   
+
+   Bagged singleton leaf fraction  Pairwise disagreement  
+0                             0.0                 0.9621  
+1                             0.0                 0.8373  
+2                             0.0                 0.8764  
+
+Largest accuracy improvement from bagging:
+Depth: Deep (depth=20)
+Accuracy improvement: 0.3525
+
+Deepest tree:
+Depth: Deep (depth=20)
+Accuracy improvement: 0.3525
+
+In these measurements, the deepest tree had the largest accuracy improvement.
+
+Q3(d): FINAL MODEL COMPARISON
+
+                Model  Clean Test Accuracy  Masked Test Accuracy  \
+0         Single Tree               0.5625                0.2750   
+1  Bagging (50 trees)               0.9000                0.7375   
+2      SAMME Boosting               0.3875                0.3875   
+
+   Bias Squared  Variance  
+0      0.374528  0.635472  
+1      0.524167  0.032239  
+2      0.914906  0.015014  
+Table saved as Q3d_final_comparison.csv
