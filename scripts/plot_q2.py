@@ -16,7 +16,7 @@ from sklearn.datasets import fetch_olivetti_faces
 from sklearn.tree import DecisionTreeClassifier
 
 ROOT = Path(__file__).resolve().parents[1]
-FIGURES = FIGURES = ROOT / "figures"
+FIGURES = ROOT / "figures"
 RESULTS = ROOT / "results"
 SPLIT_PATH = ROOT / "olivetti_split.npz"
 FIGURES.mkdir(parents=True, exist_ok=True)
