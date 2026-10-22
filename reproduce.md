@@ -54,26 +54,19 @@ notebook code.
 
 ## 3. Run the notebooks in this order
 
-Open Jupyter from the repository root and execute every cell in each notebook
-from top to bottom, using the same Python environment.
+Open Jupyter from the repository root and execute every cell in each notebook from top to bottom, using the same Python environment.
 
-1. **`answer_1.ipynb` (Q1)** — run this first. It establishes the deterministic
-   train/validation/test split and saves `olivetti_split.npz` when the notebook's
-   split-creation cell is run. Keep this file in the repository root.
-2. **`answer_2.ipynb` (Q2)** — run after Q1. It loads and reuses the saved split.
-3. **`answer_3.ipynb` (Q3)** — run after Q1 and Q2. It also reuses the saved split.
+1. **`src/answer_1.ipynb` (Q1)** — Run this first. It establishes the deterministic train/validation/test split. The saved split file, `olivetti_split.npz`, is located in the repository root.
+2. **`src/answer_2.ipynb` (Q2)** — Run after Q1. It must load and reuse the same saved split.
+3. **`src/answer_3.ipynb` (Q3)** — Run after Q1 and Q2. It must also load and reuse the same saved split.
 
-Do not regenerate or replace `olivetti_split.npz` between notebooks. The split
-uses seed `26016` (derived from roll number `M26CSA016`) and contains 240
-training, 80 validation, and 80 test images. If the split file is already
-provided in the repository, keep it and use it rather than creating a new split.
+Do not regenerate or replace `olivetti_split.npz` between notebooks. The split uses seed `26016` (derived from roll number `M26CSA016`) and contains 240 training, 80 validation, and 80 test images.
 
-If a notebook contains Google Colab-only setup cells (for example, mounting
-Google Drive or referring to a `drive/MyDrive/...` path), those cells are
-specific to the original Colab environment. Before running locally, update the
-path to point to the repository-root `olivetti_split.npz`; do not change the
-split itself or its indices. Check the notebook's data-loading cell to confirm
-the path.
+The dataset is loaded using `sklearn.datasets.fetch_olivetti_faces`. On the first run, an internet connection may be required to download the dataset through scikit-learn.
+
+If a notebook contains Google Colab-specific setup cells, such as mounting Google Drive or using a `drive/MyDrive/...` path, those cells must be adapted for local execution. Ensure that all three notebooks load the existing `olivetti_split.npz` from the repository root without changing its indices or creating a different split.
+
+Run all notebooks from the same Python environment with the dependencies installed from `requirements.txt`.
 
 ## 4. Regenerate figures with the plotting scripts
 
