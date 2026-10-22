@@ -1,0 +1,184 @@
+{
+  "project": "ML Assignment 2",
+  "dataset": {
+    "name": "Olivetti Faces",
+    "source": "sklearn.datasets.fetch_olivetti_faces",
+    "image_height": 64,
+    "image_width": 64,
+    "feature_representation": "Flattened raw pixel values",
+    "number_of_classes": 40,
+    "number_of_images": 400
+  },
+  "reproducibility": {
+    "roll_number_variable_in_q1": "M26CSA016",
+    "seed": 26016,
+    "split_file": "olivetti_split.npz",
+    "split_strategy": "For each identity, shuffle its 10 images using numpy.default_rng(seed); 6 train, 2 validation, 2 test",
+    "expected_split_sizes": {
+      "train": 240,
+      "validation": 80,
+      "test": 80
+    },
+    "note": "Q2 and Q3 load and reuse the split saved by Q1."
+  },
+  "q1": {
+    "decision_tree_validation_search": {
+      "max_depth_values": [
+        2,
+        4,
+        8,
+        16,
+        null
+      ],
+      "min_samples_leaf_values": [
+        1,
+        2,
+        4
+      ],
+      "selection_metric": "Validation accuracy",
+      "random_state": "seed"
+    },
+    "bagging": {
+      "bootstrap_sample_size": "Same size as training set",
+      "sampling": "Bootstrap sampling with replacement",
+      "tree_count_for_experiments": 200,
+      "tree_counts_evaluated": [
+        1,
+        5,
+        10,
+        25,
+        50,
+        100,
+        200
+      ],
+      "tree_parameters": "Use the selected Q1 decision-tree max_depth and min_samples_leaf",
+      "tree_random_state": "seed + b"
+    },
+    "final_comparison": {
+      "bagging_tree_count": 50,
+      "test_sets": [
+        "Clean",
+        "Masked"
+      ],
+      "mask": {
+        "image_pixel_rows_zero_based": [
+          24,
+          39
+        ],
+        "image_pixel_columns_zero_based": [
+          24,
+          39
+        ],
+        "operation": "Set the central 16x16 region to zero"
+      },
+      "metrics": [
+        "Accuracy",
+        "Mean prediction confidence"
+      ]
+    }
+  },
+  "q2": {
+    "samme": {
+      "algorithm": "Multiclass SAMME implemented from scratch",
+      "depth_search_values": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "requested_round_search_values": [
+        10,
+        25,
+        50,
+        100
+      ],
+      "selection_metric": "Validation accuracy",
+      "random_state_per_learner": "seed + t",
+      "selected_model_recorded_in_notebook": {
+        "max_depth": 3,
+        "requested_rounds": 100,
+        "actual_accepted_rounds": 100,
+        "validation_accuracy": 0.3375
+      },
+      "note": "The selected result above is the result recorded in the reviewed notebook run; rerunning may depend on library/runtime versions."
+    },
+    "bagging_vs_boosting": {
+      "ensemble_sizes": [
+        25,
+        50,
+        100
+      ],
+      "random_seed": 26016,
+      "bagging_tree_max_depth": null,
+      "bagging_min_samples_leaf": 4,
+      "bagging_tree_random_state": "RANDOM_SEED + b",
+      "boosting_weak_learner_max_depth": 3,
+      "metrics": [
+        "Training accuracy",
+        "Validation accuracy",
+        "Clean test accuracy",
+        "Training time"
+      ]
+    },
+    "final_clean_and_masked_comparison": {
+      "single_tree_max_depth": null,
+      "min_samples_leaf": 4,
+      "bagging_tree_count": 50,
+      "samme_weak_learner_max_depth": 3,
+      "samme_requested_rounds": 100,
+      "mask": "Set rows 24:40 and columns 24:40 of each 64x64 test image to zero"
+    }
+  },
+  "q3": {
+    "bias_variance_experiment": {
+      "repetitions": 30,
+      "resampling": "Within each identity, sample 6 training positions with replacement; shuffle the resampled training set",
+      "single_tree_max_depth": null,
+      "min_samples_leaf": 4,
+      "bagging_tree_count": 50,
+      "samme_weak_learner_max_depth": 3,
+      "samme_requested_rounds": 100,
+      "repetition_seed": "seed + 1000 * (r + 1)"
+    },
+    "depth_comparison": {
+      "repetitions": 30,
+      "bagging_tree_count": 100,
+      "depth_settings": {
+        "Shallow": 2,
+        "Selected_unrestricted": null,
+        "Deep": 20
+      },
+      "min_samples_leaf": 4,
+      "resampling_rng_seed": "seed + 30000",
+      "repetition_seed": "seed + 40000 + r * 1000",
+      "bagging_rng_seed_per_repetition": "repetition_seed + 100"
+    },
+    "leaf_occupancy_and_disagreement": {
+      "bagging_tree_count": 100,
+      "depth_settings": {
+        "Shallow": 2,
+        "Selected_unrestricted": null,
+        "Deep": 20
+      },
+      "min_samples_leaf": 4,
+      "resampled_training_rng_seed": "seed + 50000",
+      "bagging_rng_seed": "RANDOM_SEED_C + 100"
+    },
+    "final_comparison": {
+      "models": [
+        "Single Tree",
+        "Bagging (50 trees)",
+        "SAMME Boosting"
+      ],
+      "clean_and_masked_test_sets": true,
+      "final_table_values_are_recorded_in_notebook": true,
+      "note": "The Q3(d) notebook contains a manually specified final comparison table; preserve it as reported rather than treating these values as newly recalculated by this config."
+    }
+  },
+  "paths": {
+    "saved_split": "olivetti_split.npz",
+    "recommended_figures_directory": "figures/",
+    "recommended_results_directory": "results/",
+    "note": "Directory names are repository organization recommendations, not notebook hyperparameters."
+  }
+}
